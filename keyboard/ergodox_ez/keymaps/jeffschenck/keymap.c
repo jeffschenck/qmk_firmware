@@ -14,7 +14,6 @@
 #define PROG 1  // Programmer layer
 #define MDIA 2  // Media layer
 #define OPER 3  // OS layer
-#define APPS 4  // App switcher layer
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -24,11 +23,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |~~~~~~|           |~~~~~~|   Y  |   U  |   I  |   O  |   P  |~~~~~~~~|
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Caps   | A/L1 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | ;/L2 | '/Hyper|
+ * |Cap/Ctrl| A/L1 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | ;/L2 | '/Hyper|
  * |--------+------+------+------+------+------|~~~~~~|           |~~~~~~|------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  | //L3 | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |~~~~~~|  L4  |AltShf| Left | Right|                                       | Down |  Up  |~~~~~~|~~~~~~|~~~~~~|
+ *   | Ctrl | Alt  |GuiAlt| Left | Right|                                       | Down |  Up  |GuiAlt| Alt  | Ctrl |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |  \   |  {   |       |  }   | Esc  |
@@ -42,9 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Left Hand
   KC_GRV,           KC_1,             KC_2,             KC_3,             KC_4,             KC_5,             KC_NO,
   KC_TAB,           KC_Q,             KC_W,             KC_E,             KC_R,             KC_T,             KC_NO,
-  KC_CAPS,          LT(PROG,KC_A),    KC_S,             KC_D,             KC_F,             KC_G,
+  CTL_T(KC_CAPS),   LT(PROG,KC_A),    KC_S,             KC_D,             KC_F,             KC_G,
   KC_LSFT,          KC_Z,             KC_X,             KC_C,             KC_V,             KC_B,             KC_NO,
-  KC_NO,            KC_LALT,          LALT(KC_LSFT),    KC_LEFT,          KC_RGHT,
+  KC_LCTL,          KC_LALT,          LALT(KC_LGUI),       KC_LEFT,          KC_RGHT,
 
   // Left Thumb
                                                                                             KC_BSLS,          KC_LCBR,
@@ -56,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,            KC_Y,             KC_U,             KC_I,             KC_O,             KC_P,             KC_NO,
                     KC_H,             KC_J,             KC_K,             KC_L,             LT(MDIA,KC_SCLN), ALL_T(KC_QUOT),
   KC_NO,            KC_N,             KC_M,             KC_COMM,          KC_DOT,           LT(OPER,KC_SLSH), KC_RSFT,
-                                      KC_DOWN,          KC_UP,            KC_NO,            KC_NO,            KC_NO,
+                                      KC_DOWN,          KC_UP,            RALT(KC_RGUI),    KC_RALT,          KC_RCTL,
 
   // Right Thumb
   KC_RCBR,          KC_ESC,
@@ -163,11 +162,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |GiStTb|      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |AltUp |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |------|           |------|      |GiOtLt| GiTb |GiOtRt|      |        |
+ * |        |      |      |      |      |      |------|           |------|      |AltLt |AltDn |AltRt |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      | Tab  |SftTab|      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -194,56 +193,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Right Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          LGUI(LSFT(KC_TAB)),KC_TRNS,         KC_TRNS,          KC_TRNS,
-                    KC_TRNS,          LGUI(LALT(KC_LEFT)),LGUI(KC_TAB),   LGUI(LALT(KC_RGHT)),KC_TRNS,        KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-                                      KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-
-  // Right Thumb
-  KC_TRNS,          KC_TRNS,
-  KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS
-),
-
-/* Keymap 4: App switcher layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |GiStTb|GuiTab|                                       |      |      |      |      |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-[APPS] = KEYMAP(
-  // Left Hand
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          LGUI(LSFT(KC_TAB)),LGUI(KC_TAB),
-
-  // Left Thumb
-                                                                                            KC_TRNS,          KC_TRNS,
-                                                                                                              KC_TRNS,
-                                                                          KC_TRNS,          KC_TRNS,          KC_TRNS,
-
-  // Right Hand
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-                    KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_TRNS,          LALT(KC_UP),      KC_TRNS,          KC_TRNS,          KC_TRNS,
+                    KC_TRNS,          LALT(KC_LEFT),    LALT(KC_DOWN),    LALT(KC_RGHT),    KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_TAB,           LSFT(KC_TAB),     KC_TRNS,          KC_TRNS,          KC_TRNS,
                                       KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
 
   // Right Thumb
@@ -255,7 +207,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 const uint16_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_TAP_TOGGLE(PROG)                // FN1 - Momentary Layer 1 (PROGols)
+    [1] = ACTION_LAYER_TAP_TOGGLE(PROG)                // FN1 - Momentary Layer 1 (symbols)
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
