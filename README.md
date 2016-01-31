@@ -10,6 +10,24 @@ This documentation is edited and maintained by Erez Zukerman of ErgoDox EZ. If y
 
 The documentation below explains QMK customizations and elaborates on some of the more useful features of TMK. To understand the base firmware, and especially what *layers* are and how they work, please see [TMK_README.md](/TMK_README.md).
 
+## Building jeffschenck keyboard
+
+First build the .hex file.
+
+1. `vagrant up`
+2. `vagrant ssh`
+3. `cd /vagrant/keyboard/ergodox_ez`
+4. `make clean`
+5. `make KEYMAP=jeffschenck`
+
+Then reprogram the keyboard.
+
+1. Open [Teensy](https://www.pjrc.com/teensy/loader.html)
+2. Press keyboard reset button with paperclip
+3. Drag `/vagrant/keyboard/ergodox_ez/ergodox_ez.hex` to Teensy app
+4. Press program button (curvy arrow)
+5. Press reboot button (right arrow)
+
 ## Getting started
 
 * **If you're looking to customize a keyboard that currently runs QMK or TMK** , find your keyboard's directory under `/keyboard/` and read the README file. This will get you all set up.
