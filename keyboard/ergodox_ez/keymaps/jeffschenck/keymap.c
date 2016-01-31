@@ -162,11 +162,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |AltUp |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |GiAtUp|      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |------|           |------|      |AltLt |AltDn |AltRt |      |        |
+ * |        |      |      |      |      |      |------|           |------|      |GiAtLt|GiAtDn|GiAtRt|      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      | Tab  |SftTab|      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |GuiTab|GiStTb|      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -193,9 +193,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Right Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          LALT(KC_UP),      KC_TRNS,          KC_TRNS,          KC_TRNS,
-                    KC_TRNS,          LALT(KC_LEFT),    LALT(KC_DOWN),    LALT(KC_RGHT),    KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TAB,           LSFT(KC_TAB),     KC_TRNS,          KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_TRNS,          LGUI(LALT(KC_UP)),KC_TRNS,          KC_TRNS,          KC_TRNS,
+                    KC_TRNS,          LGUI(LALT(KC_LEFT)),LGUI(LALT(KC_DOWN)),LGUI(LALT(KC_RGHT)),KC_TRNS,    KC_TRNS,
+  KC_TRNS,          KC_TRNS,          LGUI(KC_TAB),     LGUI(LSFT(KC_TAB)),KC_TRNS,         KC_TRNS,          KC_TRNS,
                                       KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
 
   // Right Thumb
