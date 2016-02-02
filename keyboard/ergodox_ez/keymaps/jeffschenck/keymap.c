@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      | Left | Down |Right |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      | Hypr;| Play | Prev | Next |      |        |  <-- Hyper+; = Launch iTunes
+ * |        |      | 3clk | Rclk | Lclk |      |      |           |      | Hypr;| Play | Prev | Next |      |        |  <-- Hyper+; = Launch iTunes
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |VolDn |VolUp | Mute |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -129,8 +129,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | Lclk | Rclk |------|       |------|      |      |
- *                                 |      |      | 3clk |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
 [MDIA] = KEYMAP(
@@ -138,13 +138,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_MS_U,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_MS_L,          KC_MS_D,          KC_MS_R,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_BTN3,          KC_BTN2,          KC_BTN1,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
 
   // Left Thumb
                                                                                             KC_TRNS,          KC_TRNS,
                                                                                                               KC_TRNS,
-                                                                          KC_BTN1,          KC_BTN2,          KC_BTN3,
+                                                                          KC_TRNS,          KC_TRNS,          KC_TRNS,
 
   // Right Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
