@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |GiAtUp|      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        | F13  | F14  |CtrlLt|CtrlRt|      |------|           |------|      |GiAtLt|GiAtDn|GiAtRt|      |        |  <-- F13/F14 = Brightness down/up
+ * |        | BrDn | BrUp |CtrlLt|CtrlRt|      |------|           |------|      |GiAtLt|GiAtDn|GiAtRt|      |        |  <-- KC_SLCK and KC_PAUS are brightness down/up in recent OSX
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |GuiTab|GiStTb|      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -182,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Left Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_F13,           KC_F14,           LCTL(KC_LEFT),    LCTL(KC_RGHT),    KC_TRNS,
+  KC_TRNS,          KC_SLCK,          KC_PAUS,          LCTL(KC_LEFT),    LCTL(KC_RGHT),    KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
 
