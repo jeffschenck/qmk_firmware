@@ -15,6 +15,8 @@
 #define MDIA 2  // Media layer
 #define OPER 3  // OS layer
 
+#define M_OPER 0  // OPER layer macro
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
@@ -25,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |Cap/Ctrl| A/L1 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | ;/L2 | '/Hyper|
  * |--------+------+------+------+------+------|~~~~~~|           |~~~~~~|------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  | //L3 | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  | //M0 | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | Ctrl | Alt  | Gui  | Left | Right|                                       | Down |  Up  | Gui  | Alt  | Ctrl |
  *   `----------------------------------'                                       `----------------------------------'
@@ -54,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,            KC_6,             KC_7,             KC_8,             KC_9,             KC_0,             KC_MINS,
   KC_NO,            KC_Y,             KC_U,             KC_I,             KC_O,             KC_P,             MEH_T(KC_NO),
                     KC_H,             KC_J,             KC_K,             KC_L,             LT(MDIA,KC_SCLN), ALL_T(KC_QUOT),
-  KC_NO,            KC_N,             KC_M,             KC_COMM,          KC_DOT,           LT(OPER,KC_SLSH), KC_RSFT,
+  KC_NO,            KC_N,             KC_M,             KC_COMM,          KC_DOT,           M(M_OPER),        KC_RSFT,
                                       KC_DOWN,          KC_UP,            KC_RGUI,          KC_RALT,          KC_RCTL,
 
   // Right Thumb
@@ -158,15 +160,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Keymap 3: OS layer
+ * NOTE: GUI is applied to this entire layer by M(0) macro
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |GiAtUp|      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |AltUp |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        | BrDn | BrUp |CtrlLt|CtrlRt|      |------|           |------|      |GiAtLt|GiAtDn|GiAtRt|      |        |  <-- KC_23 and KC_25 are mapped in software to brightness down/up
+ * |        |      |      |      |      |      |------|           |------|      |AltLt |AltDn |AltRt |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |GuiTab|GiStTb|      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -174,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |------|       |------| Grv  | Tab  |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -182,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Left Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_F23,           KC_F24,           LCTL(KC_LEFT),    LCTL(KC_RGHT),    KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
 
@@ -193,37 +196,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Right Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS,          LGUI(LALT(KC_UP)),KC_TRNS,          KC_TRNS,          KC_TRNS,
-                    KC_TRNS,          LGUI(LALT(KC_LEFT)),LGUI(LALT(KC_DOWN)),LGUI(LALT(KC_RGHT)),KC_TRNS,    KC_TRNS,
-  KC_TRNS,          KC_TRNS,          LGUI(KC_TAB),     LGUI(LSFT(KC_TAB)),KC_TRNS,         KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_TRNS,          LALT(KC_UP),      KC_TRNS,          KC_TRNS,          KC_TRNS,
+                    KC_TRNS,          LALT(KC_LEFT),    LALT(KC_DOWN),    LALT(KC_RGHT),    KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
                                       KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
 
   // Right Thumb
   KC_TRNS,          KC_TRNS,
   KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_TRNS
+  KC_TRNS,          KC_GRV,           KC_TAB
 ),
 };
 
-
 const uint16_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_TAP_TOGGLE(PROG)                // FN1 - Momentary Layer 1 (symbols)
+  [1] = ACTION_LAYER_TAP_TOGGLE(PROG)  // FN1 - Momentary Layer 1 (symbols)
 };
+
+static uint16_t start;
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
-  // MACRODOWN only works in this function
-      switch(id) {
-        case 0:
-        if (record->event.pressed) {
-          register_code(KC_RSFT);
-        } else {
-          unregister_code(KC_RSFT);
-        }
-        break;
+  switch(id) {
+    case M_OPER:  // Momentary layer switch that also holds GUI modifier while layer engaged
+    if (record->event.pressed) {
+      start = timer_read();
+      register_code(KC_LGUI);
+      layer_on(OPER);
+    } else {
+      unregister_code(KC_LGUI);
+      layer_off(OPER);
+      if (timer_elapsed(start) < 150) {
+        register_code(KC_SLSH);
+        unregister_code(KC_SLSH);
       }
-    return MACRO_NONE;
-};
+    }
+    break;
+  }
+}
 
 // Runs just one time when the keyboard initializes.
 void * matrix_init_user(void) {
