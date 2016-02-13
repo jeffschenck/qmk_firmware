@@ -12,10 +12,7 @@
 
 #define BASE 0  // Basic layer
 #define PROG 1  // Programmer layer
-#define MDIA 2  // Media layer
-#define OPER 3  // OS layer
-
-#define M_OPER 0  // OPER layer macro
+#define MNPL 2  // Manipulation layer
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -55,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Right Hand
   KC_5,             KC_6,             KC_7,             KC_8,             KC_9,             KC_0,             KC_MINS,
   KC_NO,            KC_Y,             KC_U,             KC_I,             KC_O,             KC_P,             KC_EQL,
-                    KC_H,             KC_J,             KC_K,             KC_L,             LT(MDIA,KC_SCLN), ALL_T(KC_QUOT),
+                    KC_H,             KC_J,             KC_K,             KC_L,             LT(MNPL,KC_SCLN), ALL_T(KC_QUOT),
   KC_NO,            KC_N,             KC_M,             KC_COMM,          KC_DOT,           KC_SLSH,          KC_RSFT,
                                       KC_DOWN,          KC_UP,            KC_RGUI,          KC_RALT,          KC_RCTL,
 
@@ -112,16 +109,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,          KC_TRNS,          KC_TRNS
 ),
 
-/* Keymap 2: Media layer
+/* Keymap 2: Manipulation Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      | MsUp |      |      |      |           |      |      |      |  Up  |      |      |        |
+ * |        |      |      |GuOpUp|      |      |      |           |      |      |      |  Up  |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      | Left | Down |Right |      |        |
+ * |        |      |GuOpLt|GuOpDn|GuOpRt|      |------|           |------|      | Left | Down |Right |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      | 3clk | Rclk | Lclk |      |      |           |      | Hypr;| Play | Prev | Next |      |        |  <-- Hyper+; = Launch iTunes
+ * |        |      |      |      |      |      |      |           |      | Hypr;| Play | Prev | Next |      |        |  <-- Hyper+; = Launch iTunes
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      | BrDn | BrUp |                                       |VolDn |VolUp | Mute |      |      |    <-- F13 and F14 map to brightness up/down on OSX
  *   `----------------------------------'                                       `----------------------------------'
@@ -133,12 +130,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-[MDIA] = KEYMAP(
+[MNPL] = KEYMAP(
   // Left Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_NO,            KC_MS_U,          KC_NO,            KC_TRNS,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_MS_L,          KC_MS_D,          KC_MS_R,          KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_BTN3,          KC_BTN2,          KC_BTN1,          KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_NO,            LGUI(LALT(KC_UP)),KC_NO,            KC_TRNS,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          LGUI(LALT(KC_LEFT)),LGUI(LALT(KC_DOWN)),LGUI(LALT(KC_RGHT)),KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_NO,            KC_NO,            KC_NO,            KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_F14,           KC_F15,
 
   // Left Thumb
@@ -172,7 +169,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 // Runs just one time when the keyboard initializes.
 void * matrix_init_user(void) {
-
 };
 
 // Runs constantly in the background, in a loop.
@@ -188,11 +184,8 @@ void * matrix_scan_user(void) {
         case PROG:
             ergodox_right_led_1_on();
             break;
-        case MDIA:
+        case MNPL:
             ergodox_right_led_2_on();
-            break;
-        case OPER:
-            ergodox_right_led_3_on();
             break;
         default:
             break;
