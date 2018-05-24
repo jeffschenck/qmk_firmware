@@ -6,7 +6,7 @@
 //    triggered by holding a key, and are immediately dismissed when releasing.
 //    This way you hold the layer in your finger.
 
-#include "ergodox_ez.h"
+#include QMK_KEYBOARD_H
 #include "debug.h"
 #include "action_layer.h"
 
@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |  (   |       |  )   |      |      |
  *                                 `--------------------'       `--------------------'
  */
-[BASE] = KEYMAP(
+[BASE] = LAYOUT_ergodox(
   // Left Hand
   KC_GRV,           KC_1,             KC_2,             KC_3,             KC_4,             KC_5,             KC_6,
   KC_TAB,           KC_Q,             KC_W,             KC_E,             KC_R,             KC_T,             KC_NO,
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-[PROG] = KEYMAP(
+[PROG] = LAYOUT_ergodox(
   // Left Hand
   KC_TRNS,          KC_F1,            KC_F2,            KC_F3,            KC_F4,            KC_F5,            KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_BSLS,          KC_LCBR,          KC_RCBR,          KC_PIPE,          KC_TRNS,
@@ -130,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-[MNPL] = KEYMAP(
+[MNPL] = LAYOUT_ergodox(
   // Left Hand
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_NO,            LGUI(LALT(KC_UP)),KC_NO,            KC_TRNS,          KC_TRNS,
@@ -161,18 +161,17 @@ const uint16_t PROGMEM fn_actions[] = {
   [1] = ACTION_LAYER_TAP_TOGGLE(PROG)  // FN1 - Momentary Layer 1 (symbols)
 };
 
-static uint16_t start;
-
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
+  return MACRO_NONE;
 }
 
 // Runs just one time when the keyboard initializes.
-void * matrix_init_user(void) {
+void matrix_init_user(void) {
 };
 
 // Runs constantly in the background, in a loop.
-void * matrix_scan_user(void) {
+void matrix_scan_user(void) {
 
     uint8_t layer = biton32(layer_state);
 
