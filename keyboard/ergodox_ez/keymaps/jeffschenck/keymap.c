@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  /   |  *   |  -   |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |  =   |  {   |  }   |  |   |      |           |      |      |  7   |  8   |  9   |  +   |        |
+ * |        |      |  \   |  {   |  }   |  |   |      |           |      |      |  7   |  8   |  9   |  +   |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |  #   |  (   |  )   |  -   |------|           |------|      |  4   |  5   |  6   |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [PROG] = KEYMAP(
   // Left Hand
   KC_TRNS,          KC_F1,            KC_F2,            KC_F3,            KC_F4,            KC_F5,            KC_TRNS,
-  KC_TRNS,          KC_TRNS,          KC_EQL,           KC_LCBR,          KC_RCBR,          KC_PIPE,          KC_TRNS,
+  KC_TRNS,          KC_TRNS,          KC_BSLS,          KC_LCBR,          KC_RCBR,          KC_PIPE,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_HASH,          KC_LPRN,          KC_RPRN,          KC_MINS,
   KC_TRNS,          KC_TRNS,          KC_GRV,           KC_LBRC,          KC_RBRC,          KC_UNDS,          KC_TRNS,
   KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,          KC_TRNS,
